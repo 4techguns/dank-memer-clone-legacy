@@ -1,0 +1,12 @@
+{
+  "name": "dank-memer-clone",
+  "version": "0.0.0",
+  "private": true,
+  "description": "A clone of a Discord bot named Dank Memer",
+  "main": "swag.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
