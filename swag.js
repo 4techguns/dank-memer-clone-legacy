@@ -1,5 +1,7 @@
 console.time('bot start');
-// const Sequelize = require('sequelize');
+const Keyv = require('keyv');
+const keyv = new Keyv('sqlite://./botDB.sqlite');
+keyv.on('error', err => console.error('Keyv connection error:', err));
 const fs = require('fs');
 const { Client, Collection, Intents } = require('discord.js');
 const dotenv = require('dotenv');
@@ -7,14 +9,6 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
-
-// init database
-// const sequelize = new Sequelize('database', 'user', 'password', {
-// 	host: 'localhost',
-// 	dialect: 'sqlite',
-// 	logging: false,
-// 	storage: 'botDB.sqlite',
-// });
 
 const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
 
