@@ -20,7 +20,7 @@ module.exports = {
 		}
 
 		await interaction.editReply(`
-            you got ${rand} coins\n\n:white_check_mark: saved
+            you got ${rand} coins\n\n:white_check_mark: saved\nyou now have ${await keyv.get(interaction.user.id)} coins
         `);
 	},
 };
