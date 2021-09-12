@@ -8,7 +8,7 @@ module.exports = {
 	async execute(interaction) {
 		await interaction.deferReply();
 		const keyv = new Keyv('sqlite://../botDB.sqlite');
-        let rand = Math.round(Math.random() * (10000 - 5000) + 5000)
+        let rand = Math.round(Math.random() * (100000 - 500) + 500)
 		await interaction.editReply(`
             you got ${rand} coins\n\n<a:loadin:886214245845458944> saving...
         `);
