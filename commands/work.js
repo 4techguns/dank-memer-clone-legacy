@@ -10,7 +10,7 @@ module.exports = {
 		const keyv = new Keyv('sqlite://botDB.sqlite');
         let rand = Math.round(Math.random() * (100000 - 500) + 500)
 		await interaction.editReply(`
-            you got ${rand} coins\n\n<a:loadin:886214245845458944> saving...
+            <a:loadin:886214245845458944> ------ -> :moneybag:
         `);
 
 		if (await keyv.get(interaction.user.id) == undefined) {
@@ -20,7 +20,7 @@ module.exports = {
 		}
 
 		await interaction.editReply(`
-            you got ${rand} coins\n\n:white_check_mark: saved ${await keyv.get(interaction.user.id)} coins
+			:yellow_circle: ${rand} -> :moneybag:
         `);
 	},
 };
