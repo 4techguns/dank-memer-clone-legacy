@@ -7,7 +7,7 @@ module.exports = {
 		.setDescription('work so you can get some money'),
 	async execute(interaction) {
 		await interaction.deferReply();
-		const keyv = new Keyv('sqlite://../botDB.sqlite');
+		const keyv = new Keyv('sqlite://botDB.sqlite');
         let rand = Math.round(Math.random() * (100000 - 500) + 500)
 		await interaction.editReply(`
             you got ${rand} coins\n\n<a:loadin:886214245845458944> saving...

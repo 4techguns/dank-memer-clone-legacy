@@ -18,7 +18,7 @@ module.exports = {
 
         let bruh = ``;
 
-        const keyv = new Keyv('sqlite://../botDB.sqlite');
+        const keyv = new Keyv('sqlite://botDB.sqlite');
 
         let getthing = (!user)
         ? await keyv.get(interaction.user.id)
@@ -31,9 +31,9 @@ module.exports = {
         let bar = progressbar.filledBar(5000000, getthing, 15, '<:grey:886361741053788240>', '<:green:886361740785377331>');
 
         let embBase = new MessageEmbed()
-            .setFooter('calculayshuns')
+            .setFooter('----- ---')
             .setTitle('coins')
-            .setDescription('<a:loadin:886214245845458944>');
+            .setDescription('<a:loadin:886214245845458944> 0\nroad to max level:\n--------------------\n--% completed');
 
         await interaction.editReply({embeds: [embBase]});
 
@@ -68,8 +68,6 @@ module.exports = {
         if ((getthing) > 5000000) {
             await embBase.setFooter(`omega pogr rich 💪💰🥶 (MAX LEVEL)`)
         }
-
-        await interaction.editReply({embeds: [embBase]});
 
         await embBase.setDescription(`:yellow_circle: ${getthing}\n\nroad to max level:\n${bruh}`);
 
