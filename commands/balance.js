@@ -38,7 +38,7 @@ module.exports = {
         await interaction.editReply({embeds: [embBase]});
 
         if (bar[1] >= 100) {
-            bruh = `***FULLY COMPLETED***`
+            bruh = `***FULLY COMPLETED*** (${Math.round(bar[1])}%)`
         } else {
             bruh = `${bar[0]}\n${Math.round(bar[1])}% complete`;
         }
@@ -69,7 +69,11 @@ module.exports = {
             await embBase.setFooter(`omega pogr rich 💪💰🥶 (MAX LEVEL)`)
         }
 
-        await embBase.setDescription(`:yellow_circle: ${getthing}\n\nroad to max level:\n${bruh}`);
+        if ((getthing) > 100000000000000) {
+            await embBase.setFooter(`haker 🧑‍💻🥶 (ALMOST IMPOSSIBLE TO OBTAIN)`)
+        }
+
+        await embBase.setDescription(`<:tech_coin:888786215984320562> ${getthing} tech coins\n\nroad to max level:\n${bruh}`);
 
 		await interaction.editReply({embeds: [embBase]});
 	},
