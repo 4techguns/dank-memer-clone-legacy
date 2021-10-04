@@ -2,19 +2,20 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 const { MessageEmbed } = require('discord.js');
 const Keyv = require('keyv');
 const progressbar = require('string-progressbar');
+const { emojis } = require('../util/emojis.js')
 
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('bal')
 		.setDescription('check ur coins')
-        .addMentionableOption(option =>
+        .addUserOption(option =>
             option.setName('user')
                 .setDescription('the user you want to view their coins on')
                 .setRequired(false)),
 	async execute(interaction) {
 		await interaction.deferReply();
 
-        let user = await interaction.options.getMentionable('user', false);
+        let user = await interaction.options.getUser('user', false);
 
         let bruh = ``;
 
@@ -28,52 +29,55 @@ module.exports = {
             getthing = 0
         }
 
-        let bar = progressbar.filledBar(5000000, getthing, 15, '<:grey:886361741053788240>', '<:green:886361740785377331>');
+        let bar = progressbar.filledBar(5000000, getthing, 15, emojis.PROGRESS.GREY, emojis.PROGRESS.GREEN);
 
         let embBase = new MessageEmbed()
             .setFooter('----- ---')
-            .setTitle('coins')
-            .setDescription('<a:loadin:886214245845458944> 0\nroad to max level:\n--------------------\n--% completed');
+            .setDescription(`${emojis.COIN} 0\nroad to max level:\n--------------------\n--% completed`);
+
+        (user)
+        ? embBase.setTitle(`balance for ${user.username}`)
+        : embBase.setTitle(`your balance`)
 
         await interaction.editReply({embeds: [embBase]});
 
         if (bar[1] >= 100) {
-            bruh = `***FULLY COMPLETED*** (${Math.round(bar[1])}%)`
+            bruh = ``
         } else {
-            bruh = `${bar[0]}\n${Math.round(bar[1])}% complete`;
+            bruh = `\n\nroad to max level:\n${bar[0]}\n${Math.round(bar[1])}% complete`;
         }
 
         if ((getthing) < 30000 || (getthing) == undefined) {
             await embBase.setFooter(`broke 👎😹👎`)
         } else {
-            await embBase.setFooter(`pogr 😎👌`)
+            await embBase.setFooter(`level 1 □`)
         }
 
         if ((getthing) > 1000000) {
-            await embBase.setFooter(`rich! 💸😏`)
+            await embBase.setFooter(`level 2 ▤`)
         }
 
         if ((getthing) > 2000000) {
-            await embBase.setFooter(`pogr rich 🤑😎`)
+            await embBase.setFooter(`level 3 ▥`)
         }
 
         if ((getthing) > 3000000) {
-            await embBase.setFooter(`very pogr rich 💰😱`)
+            await embBase.setFooter(`level 4 ▧`)
         }
 
         if ((getthing) > 4000000) {
-            await embBase.setFooter(`super pogr rich 💰💪`)
+            await embBase.setFooter(`level 5 ▩`)
         }
 
         if ((getthing) > 5000000) {
-            await embBase.setFooter(`omega pogr rich 💪💰🥶 (MAX LEVEL)`)
+            await embBase.setFooter(`level 6 ◼ (MAX LEVEL)`)
         }
 
         if ((getthing) > 100000000000000) {
-            await embBase.setFooter(`haker 🧑‍💻🥶 (ALMOST IMPOSSIBLE TO OBTAIN)`)
+            await embBase.setFooter(`level 7 ◈ (hax!!!!!)`)
         }
 
-        await embBase.setDescription(`<:tech_coin:888786215984320562> ${getthing} tech coins\n\nroad to max level:\n${bruh}`);
+        await embBase.setDescription(`${emojis.COIN} ${getthing} tech coins${bruh}`);
 
 		await interaction.editReply({embeds: [embBase]});
 	},

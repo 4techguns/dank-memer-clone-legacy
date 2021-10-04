@@ -1,6 +1,10 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { MessageEmbed } = require('discord.js');
 const progressbar = require('string-progressbar');
+const { generate } = require('../util/rng.js');
+const { emojis } = require('../util/emojis.js');
+const { calcPercentageOfNumb } = require('../util/percent.js');
+const { rgbToHex } = require('../util/rgbhexconversion.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -13,13 +17,19 @@ module.exports = {
 	async execute(interaction) {
         let user = await interaction.options.getUser('user', false);
 
-        let rand = Math.round(Math.random() * (100 - 0) + 0);
+        let rand = generate(0, 100);
+        
+        let red = 0;
+        let green = 0;
 
-        let bar = progressbar.filledBar(100, rand, 20, '<:grey:886361741053788240>', '<:green:886361740785377331>');
+        (rand < 50) ? green = calcPercentageOfNumb(rand, 255) : red = calcPercentageOfNumb(rand, 255)
+
+        let bar = progressbar.filledBar(100, rand, 15, emojis.PROGRESS.GREY, emojis.PROGRESS.GREEN);
 
         let embBase = new MessageEmbed()
-            .setFooter('helo')
+            .setFooter((rand > 49) ? 'horni jail *bonk*' : 'not horni :)')
             .setTitle('horny rate machine')
+            .setColor(rgbToHex(red, green, 0))
             .setDescription(`${rand}% horny\n${bar[0]}`);
 
         if (user) {
