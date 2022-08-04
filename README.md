@@ -1,7 +1,7 @@
-# !!!WARNING!!!
-This is the old code of Dank Memer Clone. It is now considered obsolete.
-This version will now be public, with the upcoming Discord.NET rewrite being private.
-I will not provide support, bug fixes, or feature additions to this program. This means that this code may end up breaking if there are any breaking changes to the Discord API.
+This is the code to my old Dank Memer clone bot. Decided to open-source this thing since it's not going to be updated anytime soon.
 
-# Dank Memer Clone
-A clone of Dank Memer, with many useless additions.
+This bot was also just a joke bot between me and my friends who used to always grind on Dank Memer, and was the 2nd ever bot I've ever coded in discord.js, so if you plan on copying this for your own use, do so with caution.
+
+It may be better than trying to figure it all out on your own, but the code is slightly atrocious. It also takes many things from [the discord.js guide](https://discordjs.guide), so you might be better off looking there to start a discord.js bot instead of copying this.
+
+I also made a .NET rewrite somewhere in February of this year, which was also cancelled. And as you guessed, it's also hot garbage, but I'd rather not open-source it since it's a tad bit worse.
